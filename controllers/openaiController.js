@@ -5,6 +5,10 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+
+
+
+
 const generateImage = async (req, res) => {
   const { prompt, size } = req.body;
 
@@ -13,9 +17,12 @@ const generateImage = async (req, res) => {
 
   try {
     const response = await openai.createImage({
-      prompt,
+      //model: "dall-e-3",
+      prompt: prompt,
       n: 1,
       size: imageSize,
+      //size: "1792x1024",
+      //style: "vivid",
     });
 
     const imageUrl = response.data.data[0].url;
@@ -25,6 +32,8 @@ const generateImage = async (req, res) => {
       data: imageUrl,
     });
   } catch (error) {
+   
+   
     if (error.response) {
       console.log(error.response.status);
       console.log(error.response.data);
@@ -37,6 +46,7 @@ const generateImage = async (req, res) => {
       error: 'The image could not be generated',
     });
   }
+  
 };
 
 module.exports = { generateImage };
