@@ -21,8 +21,8 @@ const generateImage = async (req, res) => {
       prompt: prompt,
       n: 1,
       size: imageSize,
-      size: "1792x1024",
-      style: "vivid",
+      //size: "1792x1024",
+      //style: "vivid",
     });
 
     const imageUrl = response.data.data[0].url;
