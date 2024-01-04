@@ -14,7 +14,7 @@ const generateImage = async (req, res) => {
 
   const imageSize =
     size === 'small' ? '256x256' : size === 'medium' ? '512x512' : '1024x1024';
-
+console.log("generateImage");
   try {
     const response = await openai.createImage({
       //model: "dall-e-3",
